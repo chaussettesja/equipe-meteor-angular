@@ -1,0 +1,59 @@
+<br><br>
+<table class="table table-striped">
+	<tr>
+		<td colspan="3">
+			<div class="row">
+			<div class="col-sm-6">
+			<h3>#{{equipe.id}} - {{equipe.nom}}
+				<button class="btn btn-primary btn-sm"
+					(click)="onEnleverEquipe()"
+				>
+					<i class="fa fa-trash" aria-hidden="true"></i>
+
+				</button>
+
+
+			</h3>
+			
+			</div>
+			<div class="col-sm-6">
+			<form #b="ngForm" 
+          (ngSubmit)="onAjouterPersonne(b)">
+				<select name="personne" ngModel>
+					<option 
+					*ngFor="let p of getTabPersonne()" 
+						[ngValue]="p"
+					>
+					{{p.prenom}} {{p.nom}}
+						
+					</option>
+					
+				</select>
+				<button type="submit" class="btn btn-primary"
+				> Add</button>
+			</form>
+		</div>
+	</div>
+		</td>
+	</tr>
+	<tr>
+		<th>Prénom</th>
+		<th>Nom</th>
+		<th>Action</th>
+	</tr>
+	<tr *ngFor="let p of equipe.tabPersonne">
+		<td>{{p.prenom}}</td>
+		<td>{{p.nom}}</td>
+		<td>
+			 <button class="btn btn-danger btn-sm"
+                  (click)="onPersonneDelete(p.id)"
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+		</td>
+	</tr>
+</table>
+
+
+
+

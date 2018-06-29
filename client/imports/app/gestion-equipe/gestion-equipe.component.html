@@ -1,0 +1,97 @@
+<div class="container">
+      
+      <div class="row">
+        <div class="col-md-8">
+        <div class="divTeam">
+          Equipe : 
+          <input type="text" [(ngModel)]="team">
+          
+          <button class="btn btn-success"
+            (click)="onAjouterEquipe()"
+          >
+            Ajouter une equipe
+          </button>
+          <button class="btn btn-primary"
+          (click)="onLire()">Lire</button>
+
+          <button class="btn btn-primary"
+          (click)="onEcrire()">Ecrire</button>
+
+              
+        </div>
+        <div id="demo">
+          <app-equipe *ngFor="let e of entreprise.tabEquipe"
+          [equipe]="e"
+          ></app-equipe>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="divUser">
+          <form  #a="ngForm" 
+          (ngSubmit)="onAjouterPersonne(a)" >
+          <table>
+            <tr>
+              <td>Prenom</td>
+              <td>
+                <input type="text" name="prenom" ngModel />
+              </td>
+            </tr>
+            <tr>
+              <td>Nom</td>
+              <td>
+                <input type="text" name="nom" ngModel /></td>
+            </tr>
+            
+            <tr>
+              <td>Team</td>
+              <td>
+                <select name="team" ngModel 
+                [ngModel]="defaultEquipe">
+                <option value="0">Pas d'Equipe</option>
+                <option 
+                *ngFor="let e of entreprise.tabEquipe"
+                value="{{e.id}}" >
+                  {{e.nom}}
+                </option>   
+              </select>
+            </td>
+            </tr>
+
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+              <button class="btn btn-success" 
+                type="submit"
+              >
+                Ajouter
+              </button>
+            </td>
+            </tr>
+          </table>
+        </form>
+        </div><!-- divUser -->  
+        
+        
+        
+        <div class="divListUser">
+          
+          <table id="tabListUser">
+          
+            <tr *ngFor="let p of entreprise.tabPersonne">
+              <td> {{p.prenom}} {{p.nom}} </td>
+              <td>
+                <button class="btn btn-danger btn-sm"
+                  (click)="onPersonneDelete(p.id)"
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </td>
+          </tr>
+
+        </table>
+          </div>
+       
+      </div>  <!-- col4 -->
+      </div><!-- row -->
+      
+    </div><!-- container -->
